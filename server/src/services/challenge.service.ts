@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { message } from './claude.service';
+import { extractJSON } from './parse-json';
 import { UserProfile, DeepDive, Challenge } from '../types';
 
 function buildSystemPrompt(profile: UserProfile): string {
@@ -35,13 +36,7 @@ export async function generateChallenge(
     maxTokens: 4096,
   });
 
-  let jsonStr = response;
-  const fenceMatch = response.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (fenceMatch) {
-    jsonStr = fenceMatch[1];
-  }
-
-  const parsed = JSON.parse(jsonStr.trim());
+  const parsed = extractJSON(response);
 
   return {
     id: uuid(),

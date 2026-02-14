@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { messageWithWebSearch, ProgressCallback } from './claude.service';
+import { extractJSON } from './parse-json';
 import { UserProfile, Digest, DigestItem } from '../types';
 
 function buildSystemPrompt(profile: UserProfile): string {
@@ -43,14 +44,7 @@ function buildUserMessage(): string {
 }
 
 function parseDigestResponse(text: string, date: string): Digest {
-  // Try to extract JSON from the response
-  let jsonStr = text;
-  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (fenceMatch) {
-    jsonStr = fenceMatch[1];
-  }
-
-  const parsed = JSON.parse(jsonStr.trim());
+  const parsed = extractJSON(text);
   const items: DigestItem[] = (parsed.items || []).map((item: any) => ({
     id: uuid(),
     title: item.title || 'Untitled',

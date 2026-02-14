@@ -23,14 +23,16 @@ export function DigestPage() {
   const { record } = useHistory();
   const navigate = useNavigate();
   const [deepDiveLoading, setDeepDiveLoading] = useState<string | null>(null);
+  const [deepDiveError, setDeepDiveError] = useState<string | null>(null);
 
   const handleDeepDive = async (digestItemId: string) => {
     setDeepDiveLoading(digestItemId);
+    setDeepDiveError(null);
     try {
       const dd = await deepDiveApi.create(digestItemId);
       navigate(`/deepdive/${dd.id}`);
-    } catch {
-      // let the error surface naturally
+    } catch (err: any) {
+      setDeepDiveError(err.message || 'Failed to generate deep dive');
     } finally {
       setDeepDiveLoading(null);
     }
@@ -67,6 +69,7 @@ export function DigestPage() {
         </div>
       )}
 
+      {deepDiveError && <ErrorMessage message={deepDiveError} />}
       {deepDiveLoading && <LoadingSpinner message="Generating deep dive..." />}
 
       {digest && !generating && (
