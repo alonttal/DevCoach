@@ -1,0 +1,96 @@
+.page {
+  max-width: 800px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-primary-hover);
+}
+
+.text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.codeBlock {
+  margin-bottom: 20px;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.codeLang {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(99, 102, 241, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.codeTitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.codeExplanation {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.verdict {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.stage {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.challengeBtn {
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  color: white;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.15s;
+  width: 100%;
+}
+
+.challengeBtn:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.challengeBtn:disabled {
+  opacity: 0.6;
+}

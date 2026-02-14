@@ -1,0 +1,18 @@
+.star {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.15s, transform 0.15s;
+}
+
+.star:hover {
+  color: var(--color-niche);
+  transform: scale(1.15);
+}
+
+.active {
+  color: var(--color-niche);
+}
